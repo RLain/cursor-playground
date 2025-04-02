@@ -1,9 +1,14 @@
 # Sanity Clean Content Studio
 
+## Running studio locally
+
 
 $ npm run dev will spin up http://localhost:3333/
 
 
+## Environment variable intel
+
+"Vite exposes environment variables under import.meta.env. While Sanity also lets you access them that way, we heavily recommend that you access them using process.env." [Source](https://www.sanity.io/docs/environment-variables)
 
 __________________________
 
