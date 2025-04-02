@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'post',
@@ -47,7 +47,7 @@ export default defineType({
       title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
-      validation: (Rule) => Rule.required().min(1),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'tags',
@@ -84,7 +84,6 @@ export default defineType({
           name: 'metaDescription',
           title: 'Meta Description',
           type: 'text',
-          rows: 4,
         },
         {
           name: 'ogImage',
@@ -96,33 +95,11 @@ export default defineType({
         },
       ],
     }),
-    defineField({
-      name: 'status',
-      title: 'Status',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Draft', value: 'draft' },
-          { title: 'Published', value: 'published' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'draft',
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
       media: 'mainImage',
     },
-    prepare(selection) {
-      const { title, media } = selection;
-      return {
-        title,
-        media,
-      };
-    },
   },
-}); 
+}) 

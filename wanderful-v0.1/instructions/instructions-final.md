@@ -109,6 +109,8 @@ wanderful-v0.1
 
 ### 1. Admin Features (via Sanity Studio)
 
+For this section we must build the API integration with Sanity Studio to fetch and manage our post data.
+
 #### 1.1 Create a Blog Post
 Admins can create a new blog post inside Sanity Studio with the following fields:
 

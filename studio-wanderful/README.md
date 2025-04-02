@@ -1,5 +1,13 @@
 # Sanity Clean Content Studio
 
+
+$ npm run dev will spin up http://localhost:3333/
+
+
+
+__________________________
+
+# The generic Sanity Studio READ.md
 Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
 
 Now you can do the following things:

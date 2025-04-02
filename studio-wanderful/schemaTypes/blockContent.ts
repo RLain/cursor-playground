@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineType } from 'sanity'
 
 export default defineType({
   name: 'blockContent',
@@ -28,14 +28,14 @@ export default defineType({
         ],
         annotations: [
           {
-            title: 'URL',
             name: 'link',
             type: 'object',
+            title: 'Link',
             fields: [
               {
-                title: 'URL',
                 name: 'href',
                 type: 'url',
+                title: 'URL',
               },
             ],
           },
@@ -47,16 +47,16 @@ export default defineType({
       options: { hotspot: true },
       fields: [
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative Text',
-        },
-        {
           name: 'caption',
           type: 'string',
           title: 'Caption',
         },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        },
       ],
-    },
+    }
   ],
-}); 
+}) 

@@ -40,3 +40,9 @@ As part of this select the components you wish to add, they then get generated i
    ```
 10. We are now ready to get Composer to help with building out the application. Jason then gets Composer to build _each section_ at a time....e.g. Build Section 1.1....let Composer run, check, then build section
 1.2 etc. 
+  a. Click CMD + I to open the chat.
+  b. Type in 'Let's build a hiking blog integrated with Sanity Studio based on @instructions-final.md 
+
+      Let's first build '1. Admin Features (via Sanity Studio) -> 1.1 Create a Blog Post''
+🤖 _At this point Cursor started generating files in the codebase_
+11. I then needed to set up /studio-wanderful as a separate repo to run Sanity Studio locally on localhost:3333
