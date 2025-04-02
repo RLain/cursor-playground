@@ -2,7 +2,7 @@
 You are a software engineer, and want to build a hiking blog, where an administrator can create, update, publish and delete posts, and viewers can see a read only version
 of the posts. The administrator must be able to see a dashboard showing post engagement and top peforming posts.
 
-Your plan is to use NextJs 15, shadcn, tailwind, Lucide icons
+Your plan is to use Typescript, NextJs 15, shadcn, tailwind, Lucide icons
 
 # Core functionalities
 These are features available to the blog administrator via Sanity Studio.
@@ -109,8 +109,8 @@ Traffic sources (referrals, search, direct visits).
 
 # Doc (e.g. include packages)
 The project must use the following packages:
-@sanity/client
-Upstash Redis (@upstash/redis)
+@sanity/client (https://www.sanity.io/docs/reference/api/sanity)
+@upstash/redis
 @shadcn/ui
 lucide-react
 framer-motion
@@ -119,7 +119,118 @@ umami
 @upstash/ratelimit
 next-seo
 
+## Documentation for Sanity
+To interact with Sanity for fetching, publishing, updating, and deleting posts, you'll typically use the @sanity/client package. Here's a basic skeleton to get you started with these operations:
+1. Setup Sanity Client
+First, ensure you have the @sanity/client package installed. You can install it using npm or yarn:
+```bash
+npm install @sanity/client
+```
+2. Initialize the Sanity Client
+Create a file, for example, sanityClient.js, to initialize the Sanity client:
+```js
+import sanityClient from '@sanity/client';
+
+const client = sanityClient({
+  projectId: 'yourProjectId', // replace with your project ID
+  dataset: 'yourDataset', // replace with your dataset name
+  useCdn: true, // `false` if you want to ensure fresh data
+  apiVersion: '2023-10-01', // use a date string
+});
+
+export default client;
+```
+3. Fetch Posts
+To fetch posts, you can use a GROQ query:
+```js
+// lib/fetchPosts.js
+import client from './sanityClient';
+
+export const fetchPosts = async () => {
+  const query = `*[_type == "post"]{
+    _id,
+    title,
+    slug,
+    body,
+    mainImage,
+    categories[]->title,
+    tags,
+    publishedAt
+  }`;
+
+  const posts = await client.fetch(query);
+  return posts;
+};
+```
+4. Publish a Post
+To publish a post, you need to create or update a document:
+```js
+// lib/publishPost.js
+import client from './sanityClient';
+
+export const publishPost = async (post) => {
+  const result = await client.createOrReplace({
+    _type: 'post',
+    ...post,
+  });
+
+  return result;
+};
+```
+5. Update a Post
+To update a post, you can use the patch method:
+```js
+// lib/updatePost.js
+import client from './sanityClient';
+
+export const updatePost = async (postId, updates) => {
+  const result = await client
+    .patch(postId)
+    .set(updates)
+    .commit();
+
+  return result;
+};
+```
+6. Delete a Post
+To delete a post, use the delete method:
+```js
+// lib/deletePost.js
+import client from './sanityClient';
+
+export const deletePost = async (postId) => {
+  const result = await client.delete(postId);
+  return result;
+};
+```
+
 
 # Current file structure
-- 
-- 
+wanderful-v0.1
+├── README.md
+├── app
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components
+│   └── ui
+├── components.json
+├── eslint.config.mjs
+├── instructions
+│   ├── instructions.md
+│   └── setup_README.md
+├── lib
+│   └── utils.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+└── tsconfig.json
