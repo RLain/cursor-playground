@@ -118,6 +118,7 @@ framer-motion
 umami
 @upstash/ratelimit
 next-seo
+dotenv
 
 ## Documentation for Sanity
 To interact with Sanity for fetching, publishing, updating, and deleting posts, you'll typically use the @sanity/client package. Here's a basic skeleton to get you started with these operations:
