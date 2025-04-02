@@ -3,14 +3,15 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {WanderfulSettings} from './secrets'
+import {environment} from './environment'
 
 export default defineConfig({
   name: 'default',
   title: 'Wanderful',
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: process.env.SANITY_STUDIO_DATASET!,
-  apiVersion: process.env.SANITY_STUDIO_API_VERSION!,
+  projectId: environment.projectId,
+  dataset: environment.dataset,
+  apiVersion: environment.apiVersion,
 
   plugins: [
     structureTool(),
