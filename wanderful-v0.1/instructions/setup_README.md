@@ -21,4 +21,22 @@ As part of this select the components you wish to add, they then get generated i
      i. Don't create actual code, just return the PRD
      ii. Include the file structure in the doc
      iii. Include all documentations provided with example code as these are important context
-  c.
+  c. I then copied the output into instructions-final.md and reviewed
+9. I then asked Claude "Is there anything that you think is missing or could be improved?" and it identified some gaps, I then followed up with
+   ```md
+   Please add the following:
+
+    A testing section that uses Jasmine for unit testing with core functionality tested and ensuring each test expects a specific outcome, with no tests overlapping the outcomes.
+
+    A error handling section to define a global error handler
+
+    CI/CD section utilising Semaphore and best practises 
+
+    Include that the blog must be responsive
+
+    Questions:
+
+    Q1: Do we need authentication? My understanding is the backend is managed on Sanity and the blog simply renders the data?
+   ```
+10. We are now ready to get Composer to help with building out the application. Jason then gets Composer to build _each section_ at a time....e.g. Build Section 1.1....let Composer run, check, then build section
+1.2 etc. 
