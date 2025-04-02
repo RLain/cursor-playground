@@ -51,3 +51,5 @@ As part of this select the components you wish to add, they then get generated i
       Let's first build '1. Admin Features (via Sanity Studio) -> 1.1 Create a Blog Post''
 🤖 _At this point Cursor started generating files in the codebase_
 11. I then needed to set up /studio-wanderful as a separate repo to run Sanity Studio locally on localhost:3333
+
+ℹ️ Reminder to future self: You are on part 3 and need to continue on "Querying content with GROQ"
