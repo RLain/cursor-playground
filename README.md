@@ -3,6 +3,8 @@ Playing around and testing cursor IDE
 
 This is the start of the wanderful-life.co.uk build hiking 🥾
 
+The V0.1 plan is to leverage off [Sanity Studio](https://www.sanity.io/) which is a CMS. Get the blog up and running, then consider if building out a custom CMS would be fun.
+
 # Recommended set up
 
 This is documenting how we set up the repo in readiness to leverage off cursor.
