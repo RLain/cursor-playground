@@ -15,4 +15,10 @@ As part of this select the components you wish to add, they then get generated i
    - Noting that $ tree will returning _everything_ which is uncessary so we can rather use $  tree -L 2 -I 'node_modules|.git'
    - This goes two levels down using -L
    - And ignores node_modules and git using -I
-8.
+8. Then Jason recommends copying your draft instructions.md into Claude o1 model and doing a series of prompts:
+  a. 'How should I structure my project files (try to create as few files as possible)
+  b. Help me add details to the original PRD that give clear alignment to developers who will implement the project
+     i. Don't create actual code, just return the PRD
+     ii. Include the file structure in the doc
+     iii. Include all documentations provided with example code as these are important context
+  c.
