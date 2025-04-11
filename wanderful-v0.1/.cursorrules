@@ -1,0 +1,220 @@
+# .cursorrules
+
+# ------------------------------
+# Next.js Best Practices
+# ------------------------------
+
+## Project Structure
+- Use the App Router directory structure
+- Place route-specific components in the `app` directory
+- Place shared components in the `components` directory
+- Place utilities and helpers in the `lib` directory
+- Use lowercase-with-dashes for directories (e.g., `components/auth-wizard`)
+- Co-locate route logic and metadata (e.g., in `app/products/page.tsx`)
+
+## Components
+- Use Server Components by default
+- Mark Client Components explicitly with `'use client'`
+- Wrap Client Components in `<Suspense>` with fallback UI
+- Use dynamic loading for non-critical or large components
+- Implement Error Boundaries for resilience
+- Avoid fetching data in both layout and page files unless necessary
+
+## Performance
+- Optimize images (use WebP, correct sizes, lazy loading)
+- Minimize `useEffect` and `setState` usage
+- Favor Server Components and server-side data fetching
+- Implement caching strategies with headers, revalidation, or `fetch` options
+- Use dynamic imports for performance-sensitive components
+
+## Data Fetching
+- Fetch data in Server Components when possible
+- Implement loading and error UI states
+- Use caching and revalidation to optimize performance
+- Avoid redundant data fetching across layout/page boundaries
+
+## Routing
+- Follow App Router conventions
+- Use dynamic and parallel routes appropriately
+- Implement `loading.tsx` and `error.tsx` for each route group
+- Define SEO metadata using the `metadata` export
+
+## Forms and Validation
+- Use `zod` for schema validation
+- Validate forms both client-side and server-side
+- Handle loading and error states explicitly during submission
+- Use progressive enhancement (e.g., server actions or form tags) when possible
+
+## State Management
+- Minimize client-side state
+- Prefer server-side state where applicable
+- Use React Context only when truly shared across the app
+- Implement optimistic UI and loading states where necessary
+
+---
+
+# React Best Practices
+
+## Component Structure
+- Use functional components
+- Keep components small and focused
+- Extract reusable logic into custom hooks
+- Use composition over inheritance
+- Define prop types using TypeScript (e.g., `ButtonProps`)
+- Co-locate component props/types with the component file
+
+## Hooks
+- Follow the Rules of Hooks
+- Use custom hooks for reusable logic
+- Keep hooks small and purposeful
+- Use correct dependency arrays in `useEffect`
+- Implement cleanup where needed
+- Avoid nested or conditionally-called hooks
+
+## State Management
+- Use `useState` for local state
+- Use `useReducer` for complex logic
+- Keep state close to where it's used
+- Avoid prop drilling through proper composition
+- Use libraries (e.g., Zustand, Jotai) only if app complexity demands
+
+## Performance
+- Use `React.memo` and `useMemo`/`useCallback` as needed
+- Avoid inline anonymous functions in JSX
+- Use lazy loading and code splitting for expensive components
+- Profile render performance and optimize re-renders
+- Always use stable keys in lists
+
+## Forms
+- Use controlled components
+- Validate inputs properly with libraries or custom validators
+- Handle loading and error states on submission
+- Prefer declarative form libraries (e.g., React Hook Form for complex use cases)
+- Ensure accessible forms (ARIA, labels, keyboard handling)
+
+## Error Handling
+- Use Error Boundaries for sync rendering errors
+- Catch async errors and show user-friendly messages
+- Provide fallback UIs and loading states
+- Log errors appropriately (e.g., Sentry, Console)
+- Handle edge cases defensively
+
+## Testing
+- Write unit tests for components and hooks
+- Write integration tests for form flows and routing
+- Use React Testing Library
+- Test user interactions and async flows
+- Use mock data and simulate error states
+
+## Accessibility
+- Use semantic HTML elements (`button`, `nav`, `section`, etc.)
+- Implement proper ARIA attributes
+- Ensure full keyboard navigability
+- Manage focus on modal/dialog triggers
+- Add descriptive `alt` text for images
+
+## Code Organization
+- Group related components in folders
+- Follow naming conventions (PascalCase for components, camelCase for files where applicable)
+- Co-locate styles and tests with components
+- Use barrel exports (`index.ts`) for cleaner imports
+- Document complex component logic using comments or doc blocks
+
+---
+
+# Tailwind CSS Best Practices
+
+## Project Setup
+- Customize Tailwind theme (spacing, colors, typography)
+- Use proper `content` paths for purge
+- Integrate only necessary plugins
+- Define a semantic color palette in `tailwind.config.js`
+
+## Styling Strategy
+- Use utility classes over custom CSS
+- Use `@apply` to group repeated utilities (for component classes)
+- Use `clsx` or `classnames` for conditional logic
+- Limit long className strings by extracting into components or helper functions
+
+## Layout and Responsiveness
+- Use Flexbox and Grid utilities strategically
+- Implement a spacing scale consistently
+- Use mobile-first responsive utilities
+- Use container queries and logical breakpoints
+- Prefer consistent padding/margin strategies
+
+## Typography
+- Configure custom fonts in Tailwind config
+- Use Tailwind typography utilities for font-size, weight, spacing
+- Ensure good line height and readable scales across breakpoints
+
+## Colors
+- Use semantic names (e.g., `primary`, `danger`, `muted`)
+- Ensure WCAG-compliant contrast
+- Use opacity and hover utilities for subtle feedback
+- Use gradients and transitions for polished UI
+
+## Components
+- Prefer shadcn/ui components for consistency
+- Extend and customize variants where needed
+- Keep component variants unified across the app
+- Use transitions and motion utilities appropriately
+- Ensure accessibility (e.g., focus rings, keyboard nav)
+
+## Performance
+- Use PurgeCSS (via `content` config) to remove unused classes
+- Minimize use of arbitrary values and custom CSS
+- Use production builds for deployment
+- Monitor bundle size and utility growth
+
+## Best Practices
+- Follow class naming conventions
+- Group utility classes logically (not alphabetically)
+- Document utility choices and constraints in code or design system
+- Follow accessibility guidelines
+- Use version control for config and theme changes
+
+---
+
+# TypeScript Best Practices
+
+## Type System
+- Prefer `interface` for object shapes, `type` for unions/intersections
+- Avoid `any`; use `unknown` and type guards
+- Use `readonly` for immutable structures
+- Use generics for reusable logic
+- Use discriminated unions for safe variant handling
+
+## Naming Conventions
+- PascalCase for types/interfaces (`User`, `UserProps`)
+- camelCase for functions/variables
+- UPPER_CASE for constants
+- Prefix React props with `Props` (e.g., `CardProps`)
+- Use descriptive, intent-driven names (`isLoading`, `hasError`)
+
+## Organization
+- Keep types close to usage when local
+- Use `types/` directory for shared types
+- Use `index.ts` for barrel exports
+- Co-locate component prop types with components
+
+## Functions
+- Use explicit return types for public functions
+- Use arrow functions consistently
+- Use async/await and handle errors with typed try/catch
+- Use function overloads for type-safe APIs
+
+## Error Handling
+- Create domain-specific custom error types
+- Use `Result` or `Either` types for error-returning functions
+- Catch and type errors in async flows
+- Avoid overuse of `!` non-null assertions
+- Prefer `in` and `typeof` guards for runtime checks
+
+## Advanced Patterns
+- Use Builder or Factory patterns for flexible object creation
+- Use Repository pattern for data access
+- Use Module pattern for isolation
+- Leverage dependency injection where applicable
+- Use conditional and mapped types for complex inference
+

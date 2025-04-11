@@ -1,9 +1,18 @@
 # cursor-playground
-Playing around and testing cursor IDE
+
+This is a multi-facetated project that includes:
+• Playing around and testing cursor IDE
+• Upskilling on React, Next.js and Shadcn/UI - using Angular at work and want to get exposure to new frameworks.
 
 This is the start of the wanderful-life.co.uk build hiking 🥾
 
 The V0.1 plan is to leverage off [Sanity Studio](https://www.sanity.io/) which is a CMS. Get the blog up and running, then consider if building out a custom CMS would be fun.
+
+# Important learnings
+
+• Make sure cursor properly sets up secrets in an .env file and doesn't added any secrets directly into thre code base....see point 11 warning below.
+• Set up a .cursorrules files - [Cursor Rule Maker](https://cursorrules.agnt.one/chat) & [Awesome Cursor Rules](https://github.com/PatrickJS/awesome-cursorrules)
+
 
 # Recommended set up
 
@@ -54,4 +63,45 @@ As part of this select the components you wish to add, they then get generated i
 🤖 _At this point Cursor started generating files in the codebase_
 11. I then needed to set up /studio-wanderful as a separate repo to run Sanity Studio locally on localhost:3333
 
-ℹ️ Reminder to future self: You are on part 3 and need to continue on "Querying content with GROQ"
+⚠️ Cursor did not set up an .env file automatically inside /studio-wanderful (nor did I set one up) so it added the studio secrets directly into the code base. This required prompting it to set up env configuration....
+
+12. Continued prompting
+'Let's continue build a hiking blog integrated with Sanity Studio based on @instructions-final.md 
+
+Let's now build '### 2. Public User Features (Read-Only)
+
+#### 2.1 View Blog Posts'. 
+
+13. At this point I 
+  a. Added in the `.cursorrules` file as wanted to explicate more expectation for cursor to leverage off.
+  b. Tweaked the project structure on instructions-final.md to ensure that .env.local and environment.ts are included for sensitive cred management.
+
+
+--> --> --> Reminder to self - add a design system to this repo to manage colouring etc
+
+__________-
+
+# Q&A
+
+1) What (blog) Means
+
+GPT: It’s a “route group” in Next.js App Router. The parentheses indicate that the folder won’t affect the URL path — it’s purely an organizational tool.
+
+For example:
+/app/(blog)/posts/page.tsx → /posts
+/app/(blog)/page.tsx → /
+
+Even though the files live under (blog), the URLs will not include /blog.
+
+2) 🧪 App Router (/app directory) — Introduced in Next.js 13+
+The modern routing system with powerful features, better structure, and improved developer experience.
+
+File-Based Routing + Enhanced Structure:
+app/page.tsx → /
+app/about/page.tsx → /about
+
+You can colocate components, loading states, and error boundaries.
+
+
+
+

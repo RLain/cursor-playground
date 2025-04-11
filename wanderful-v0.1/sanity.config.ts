@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './lib/sanity/schemas';
+import { schemaTypes } from './src/lib/sanity/schemas';
 
 export default defineConfig({
   name: 'wanderful-blog',

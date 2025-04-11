@@ -16,93 +16,91 @@ The project will utilize:
 ## Project Structure
 ```
 wanderful-v0.1
+├── .env.local
+├── .env.example
 ├── README.md
-├── app
-│   ├── (blog)                       # Public-facing blog routes
-│   │   ├── layout.tsx               # Blog layout with navigation
-│   │   ├── page.tsx                 # Homepage with featured posts
-│   │   ├── posts
-│   │   │   ├── [slug]
-│   │   │   │   └── page.tsx         # Individual post page
-│   │   │   └── page.tsx             # All posts listing page
-│   │   ├── categories
-│   │   │   ├── [category]
-│   │   │   │   └── page.tsx         # Category filtered posts
-│   │   │   └── page.tsx             # All categories listing
-│   │   └── tags
-│   │       ├── [tag]
-│   │       │   └── page.tsx         # Tag filtered posts
-│   │       └── page.tsx             # All tags listing
-│   ├── admin                        # Admin routes (dashboard)
-│   │   ├── layout.tsx               # Admin layout with navigation
-│   │   ├── page.tsx                 # Admin dashboard main page
-│   │   └── analytics
-│   │       └── page.tsx             # Analytics dashboard
-│   ├── api                          # API routes
-│   │   ├── posts
-│   │   │   └── route.ts             # Post API endpoints
-│   │   └── search
-│   │       └── route.ts             # Search API endpoint
-│   ├── favicon.ico
-│   ├── globals.css
-│   └── layout.tsx                   # Root layout
-├── components
-│   ├── admin                        # Admin components
-│   │   ├── analytics
-│   │   │   ├── engagement-chart.tsx
-│   │   │   ├── popular-posts.tsx
-│   │   │   └── stats-cards.tsx
-│   │   └── dashboard
-│   │       └── recent-activity.tsx
-│   ├── blog                         # Blog components
-│   │   ├── post-card.tsx            # Card view for posts in listings
-│   │   ├── post-content.tsx         # Full post content renderer
-│   │   ├── post-header.tsx          # Post title, image, metadata
-│   │   ├── related-posts.tsx        # Related posts component
-│   │   └── search-filter.tsx        # Search and filtering component
-│   ├── layout                       # Shared layout components
-│   │   ├── footer.tsx
-│   │   ├── header.tsx
-│   │   ├── navigation.tsx
-│   │   └── theme-toggle.tsx
-│   └── ui                           # shadcn components
-├── lib
-│   ├── sanity                       # Sanity related code
-│   │   ├── client.ts                # Sanity client setup
-│   │   ├── queries.ts               # GROQ queries
-│   │   └── schemas                  # Sanity schema definitions
-│   │       ├── index.ts             # Schema export
-│   │       ├── post.ts              # Post schema
-│   │       ├── category.ts          # Category schema
-│   │       └── tag.ts               # Tag schema
-│   ├── analytics                    # Analytics related
-│   │   ├── umami.ts                 # Umami setup
-│   │   └── vercel.ts                # Vercel analytics setup
-│   ├── utils                        # Utility functions
-│   │   ├── date-format.ts           # Date formatting utilities
-│   │   ├── image-utils.ts           # Image processing utilities
-│   │   └── read-time.ts             # Calculate read time
-│   └── redis                        # Redis/Upstash setup
-│       ├── client.ts                # Redis client
-│       └── rate-limit.ts            # Rate limiting
-├── sanity.config.ts                 # Sanity configuration
-├── next.config.ts                   # Next.js configuration
-├── tailwind.config.ts               # Tailwind configuration
-├── tsconfig.json
+├── next.config.js
 ├── package.json
-├── public                           # Static assets
-│   ├── images
-│   │   └── logo.svg                 # Site logo
-│   └── favicon.ico
-├── tests                            # Test files
-│   ├── unit                         # Unit tests
-│   │   ├── components               # Component tests
-│   │   └── utils                    # Utility function tests
-│   └── integration                  # Integration tests
-└── types                            # TypeScript type definitions
-    ├── post.ts                      # Post related types
-    ├── sanity.ts                    # Sanity related types
-    └── analytics.ts                 # Analytics related types
+├── tailwind.config.js
+├── tsconfig.json
+├── middleware.ts
+├── public
+│   ├── favicon.ico
+│   └── images/
+│       └── logo.svg
+├── src
+│   ├── actions/
+│   │   ├── posts.ts
+│   │   └── search.ts
+│   ├── app
+│   │   ├── (admin)
+│   │   │   ├── analytics/page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── error.tsx
+│   │   │   └── page.tsx
+│   │   ├── (blog)
+│   │   │   ├── categories/[category]/page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── error.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── posts/[slug]/page.tsx
+│   │   │   └── tags/[tag]/page.tsx
+│   │   ├── api/
+│   │   │   ├── posts/route.ts
+│   │   │   ├── revalidate/route.ts  // For Sanity webhooks
+│   │   │   └── search/route.ts
+│   │   ├── error.tsx
+│   │   ├── not-found.tsx
+│   │   ├── globals.css
+│   │   └── layout.tsx
+│   ├── components
+│   │   ├── admin/
+│   │   ├── blog/
+│   │   ├── layout/
+│   │   │   ├── footer.tsx
+│   │   │   ├── header.tsx
+│   │   │   ├── navigation.tsx
+│   │   │   └── theme-toggle.tsx
+│   │   ├── shared/
+│   │   │   ├── portable-text.tsx  // For Sanity content
+│   │   │   └── seo.tsx
+│   │   └── ui/
+│   ├── config/
+│   │   ├── environment.ts
+│   │   └── site.ts
+│   ├── constants/
+│   │   ├── navigation.ts
+│   │   └── settings.ts
+│   ├── hooks/
+│   │   ├── use-preview.ts
+│   │   └── use-media-query.ts
+│   ├── lib/
+│   │   ├── analytics/
+│   │   │   ├── umami.ts
+│   │   │   └── vercel.ts
+│   │   ├── redis/
+│   │   │   ├── client.ts
+│   │   │   └── rate-limit.ts
+│   │   ├── sanity/
+│   │   │   ├── client.ts
+│   │   │   ├── config.ts
+│   │   │   ├── image.ts
+│   │   │   └── queries.ts
+│   │   └── utils/
+│   │       ├── date-format.ts
+│   │       ├── image-utils.ts
+│   │       └── read-time.ts
+│   ├── providers/
+│   │   ├── theme-provider.tsx
+│   │   └── preview-provider.tsx
+│   ├── stores/
+│   ├── styles/
+│   │   └── animations.css
+│   └── types/
+│       ├── analytics.ts
+│       ├── env.d.ts
+│       ├── post.ts
+│       └── sanity.ts
 ```
 
 ## Functional Requirements
