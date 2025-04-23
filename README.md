@@ -10,8 +10,8 @@ The V0.1 plan is to leverage off [Sanity Studio](https://www.sanity.io/) which i
 
 # Important learnings
 
-• Make sure cursor properly sets up secrets in an .env file and doesn't added any secrets directly into thre code base....see point 11 warning below.
-• Set up a .cursorrules files - [Cursor Rule Maker](https://cursorrules.agnt.one/chat) & [Awesome Cursor Rules](https://github.com/PatrickJS/awesome-cursorrules)
+- Make sure cursor properly sets up secrets in an .env file and doesn't added any secrets directly into thre code base....see point 11 warning below.
+- Set up a .cursorrules files: [Cursor Rule Maker](https://cursorrules.agnt.one/chat) & [Awesome Cursor Rules](https://github.com/PatrickJS/awesome-cursorrules)
 
 
 # Recommended set up
