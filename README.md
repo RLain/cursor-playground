@@ -1,8 +1,8 @@
 # cursor-playground
 
 This is a multi-facetated project that includes:
-• Playing around and testing cursor IDE
-• Upskilling on React, Next.js and Shadcn/UI - using Angular at work and want to get exposure to new frameworks.
+- Playing around and testing cursor IDE
+- Upskilling on React, Next.js and Shadcn/UI: using Angular at work and want to get exposure to new frameworks.
 
 This is the start of the wanderful-life.co.uk build hiking 🥾
 
