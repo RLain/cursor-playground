@@ -8,17 +8,23 @@ This is the start of the wanderful-life.co.uk build hiking 🥾
 
 The V0.1 plan is to leverage off [Sanity Studio](https://www.sanity.io/) which is a CMS. Get the blog up and running, then consider if building out a custom CMS would be fun.
 
+# Running local
+
+- $ cd into /studio-wanderful and run npm run dev. This spins up http://localhost:3333/
+- $ cd into /wanderful-v0.1 and run npm run dev. This spins up http://localhost:3000/
+
 # Important learnings
 
 • Make sure cursor properly sets up secrets in an .env file and doesn't added any secrets directly into thre code base....see point 11 warning below.
 • Set up a .cursorrules files - [Cursor Rule Maker](https://cursorrules.agnt.one/chat) & [Awesome Cursor Rules](https://github.com/PatrickJS/awesome-cursorrules)
-
+• The critical tailwind config was not set up properly. Explicate this better in the instructions.md
 
 # Recommended set up
 
 This is documenting how we set up the repo in readiness to leverage off cursor.
 
-🔗 https://www.youtube.com/watch?v=2PjmPU07KNs&t=3s&ab_channel=AIJason
+🔗 [Best Cursor Workflow that no one talks about...
+](https://www.youtube.com/watch?v=2PjmPU07KNs&t=3s&ab_channel=AIJason)
 
 1. We created the instructions.md file and populated with the PRD
 2. Then we spun up the boilerplate $ npx shadcn@latest init  
@@ -76,6 +82,25 @@ Let's now build '### 2. Public User Features (Read-Only)
   a. Added in the `.cursorrules` file as wanted to explicate more expectation for cursor to leverage off.
   b. Tweaked the project structure on instructions-final.md to ensure that .env.local and environment.ts are included for sensitive cred management.
 
+14. I then tried to get cursor to continue building out section 2, but unfortunately the pro plan had expired. _Significantly_ reduced experienced on the free plan with regular quote issues. I can only use gpt-4o in Edit mode on the free plan.
+
+15. Next I discovered I didn't have a CSS and tailwind set up so needed to 
+- create a /src/global.css file
+- install using npm, 
+- create a tailwind.config.js file and 
+- add the module.exports to the postcss.config.js.
+
+16. Next I realised at somepoint the shadcn components had disappeared....so I reinstalled under wanderful-v0.1/src/components/ui
+
+At this point I asked Cursor to improve the UI using shadcn, it proposed the following:
+- Add a search/filter bar above the posts
+- Switch from pagination to infinite scroll
+- Show post metadata (date, author, excerpt) on the cards
+- Add skeleton loading placeholders instead of the spinner
+- Adjust grid spacing or card hover animations
+
+This is what the BlogHomePage looked like prior to any updates:
+![point 17](/wanderful-v0.1/readme-assets/point%2016%20progress.png)
 
 --> --> --> Reminder to self - add a design system to this repo to manage colouring etc
 
