@@ -1,18 +1,11 @@
-"use client"; // Ensure this is a client component
+"use client"; 
 
-import BlogHomePage from "../components/blog/home-page";
+import './globals.css';
 
-const Home = () => {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <div>
-        <h1>Welcome to the Blog</h1>
-        <body>
-          <BlogHomePage />
-        </body>
-      </div>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
-};
-
-export default Home;
+}
